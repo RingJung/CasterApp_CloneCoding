@@ -9,12 +9,13 @@
     <ImageView
         android:id="@+id/castImg"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:contentDescription="@string/app_name"
-        android:scaleType="fitXY"
-        android:src="@drawable/img_avatar3" />
+        android:scaleType="fitCenter"
+        android:src="@drawable/img_avatar3"
+        />
 
 
     <TextView
