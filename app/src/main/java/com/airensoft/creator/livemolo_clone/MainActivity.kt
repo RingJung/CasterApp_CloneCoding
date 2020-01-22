@@ -3,173 +3,54 @@ package com.airensoft.creator.livemolo_clone
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.viewpager.widget.ViewPager
 import com.airensoft.creator.livemolo_clone.adapter.CastListStaggeredAdapter
+import com.airensoft.creator.livemolo_clone.adapter.MyFragmentPagerAdapter
+import com.airensoft.creator.livemolo_clone.fragment.Main_fragment
+import com.airensoft.creator.livemolo_clone.fragment.ThreeFragment
+import com.airensoft.creator.livemolo_clone.fragment.TwoFragment
 import com.airensoft.creator.livemolo_clone.model.CastModel
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var viewpager: ViewPager
+    private lateinit var tabs: TabLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         initView()
-
+        setupViewPager()
     }
 
     private fun initView() {
-        recyclerview.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        //This will for default android divider
-        recyclerview.addItemDecoration(GridItemDecoration(10, 2))
-
-        val castListAdapter =
-            CastListStaggeredAdapter()
-        recyclerview.adapter = castListAdapter
-
-        castListAdapter.setCastList(CastData())
+        tabs = findViewById(R.id.tabs)
+        viewpager = findViewById(R.id.viewpager)
     }
 
-    private fun CastData(): List<CastModel> {
-        var listOfCast = arrayListOf<CastModel>()
+    private fun setupViewPager() {
 
-        var castModel = CastModel(
-            "caster1",
-            "title test 1",
-            1111,
-            R.drawable.img_avatar3,
-            "https://www.w3schools.com/w3css/img_lights.jpg"
-        )
-        listOfCast.add(castModel)
+        val adapter = MyFragmentPagerAdapter(getSupportFragmentManager())
 
-        castModel = CastModel(
-            "caster1",
-            "title test 1",
-            1111,
-            R.drawable.img_avatar3,
-            "https://media.gettyimages.com/photos/cropped-image-of-person-eye-picture-id942369796?s=612x612"
-        )
-        listOfCast.add(castModel)
+        var firstFragmet: Main_fragment = Main_fragment.newInstance("First Fragment")
+        var secondFragmet: TwoFragment = TwoFragment.newInstance("Second Fragment")
+        var thirdFragmet: ThreeFragment = ThreeFragment.newInstance("Third Fragment")
 
-        castModel = CastModel(
-            "caster1",
-            "title test 1",
-            1111,
-            R.drawable.img_avatar3,
-            "https://www.pythoncircle.com/media/uploads/desktop-wallpaper-change-python-20190823-d0843f2cd287490f8e1eeaa712e0f689.jpeg"
-        )
-        listOfCast.add(castModel)
 
-        castModel = CastModel(
-            "caster1",
-            "title test 1",
-            1111,
-            R.drawable.img_avatar3,
-            "https://cdn.vox-cdn.com/thumbor/K7b0-MAQj0C2hy707Mm8WsUIocI=/0x0:600x350/1200x800/filters:focal(252x127:348x223)/cdn.vox-cdn.com/uploads/chorus_image/image/63386642/A_Consensus_sm.0.jpg"
-        )
-        listOfCast.add(castModel)
+        adapter.addFragment(firstFragmet, "Main")
+        adapter.addFragment(secondFragmet, "TWO")
+        adapter.addFragment(thirdFragmet, "THREE")
 
-        castModel = CastModel(
-            "caster1",
-            "title test 1",
-            1111,
-            R.drawable.img_avatar3,
-            "https://www.designwizard.com/wp-content/uploads/2017/03/COLLL-600x1080.jpg"
-        )
-        listOfCast.add(castModel)
+        viewpager!!.adapter = adapter
 
-        castModel = CastModel(
-            "caster1",
-            "title test 1",
-            1111,
-            R.drawable.img_avatar3,
-            "https://www.w3schools.com/w3css/img_lights.jpg"
-        )
-        listOfCast.add(castModel)
+        tabs!!.setupWithViewPager(viewpager)
 
-        castModel = CastModel(
-            "caster1",
-            "title test 1",
-            1111,
-            R.drawable.img_avatar3,
-            "https://media.gettyimages.com/photos/cropped-image-of-person-eye-picture-id942369796?s=612x612"
-        )
-        listOfCast.add(castModel)
-
-        castModel = CastModel(
-            "caster1",
-            "title test 1",
-            1111,
-            R.drawable.img_avatar3,
-            "https://www.pythoncircle.com/media/uploads/desktop-wallpaper-change-python-20190823-d0843f2cd287490f8e1eeaa712e0f689.jpeg"
-        )
-        listOfCast.add(castModel)
-
-        castModel = CastModel(
-            "caster1",
-            "title test 1",
-            1111,
-            R.drawable.img_avatar3,
-            "https://cdn.vox-cdn.com/thumbor/K7b0-MAQj0C2hy707Mm8WsUIocI=/0x0:600x350/1200x800/filters:focal(252x127:348x223)/cdn.vox-cdn.com/uploads/chorus_image/image/63386642/A_Consensus_sm.0.jpg"
-        )
-        listOfCast.add(castModel)
-
-        castModel = CastModel(
-            "caster1",
-            "title test 1",
-            1111,
-            R.drawable.img_avatar3,
-            "https://www.designwizard.com/wp-content/uploads/2017/03/COLLL-600x1080.jpg"
-        )
-        listOfCast.add(castModel)
-
-        castModel = CastModel(
-            "caster1",
-            "title test 1",
-            1111,
-            R.drawable.img_avatar3,
-            "https://www.w3schools.com/w3css/img_lights.jpg"
-        )
-        listOfCast.add(castModel)
-
-        castModel = CastModel(
-            "caster1",
-            "title test 1",
-            1111,
-            R.drawable.img_avatar3,
-            "https://media.gettyimages.com/photos/cropped-image-of-person-eye-picture-id942369796?s=612x612"
-        )
-        listOfCast.add(castModel)
-
-        castModel = CastModel(
-            "caster1",
-            "title test 1",
-            1111,
-            R.drawable.img_avatar3,
-            "https://www.pythoncircle.com/media/uploads/desktop-wallpaper-change-python-20190823-d0843f2cd287490f8e1eeaa712e0f689.jpeg"
-        )
-        listOfCast.add(castModel)
-
-        castModel = CastModel(
-            "caster1",
-            "title test 1",
-            1111,
-            R.drawable.img_avatar3,
-            "https://cdn.vox-cdn.com/thumbor/K7b0-MAQj0C2hy707Mm8WsUIocI=/0x0:600x350/1200x800/filters:focal(252x127:348x223)/cdn.vox-cdn.com/uploads/chorus_image/image/63386642/A_Consensus_sm.0.jpg"
-        )
-        listOfCast.add(castModel)
-
-        castModel = CastModel(
-            "caster1",
-            "title test 1",
-            1111,
-            R.drawable.img_avatar3,
-            "https://www.designwizard.com/wp-content/uploads/2017/03/COLLL-600x1080.jpg"
-        )
-        listOfCast.add(castModel)
-
-        return listOfCast
     }
+
+
 
 }
