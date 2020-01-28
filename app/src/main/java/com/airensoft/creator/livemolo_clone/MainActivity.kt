@@ -2,16 +2,12 @@ package com.airensoft.creator.livemolo_clone
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.viewpager.widget.ViewPager
-import com.airensoft.creator.livemolo_clone.adapter.CastListStaggeredAdapter
 import com.airensoft.creator.livemolo_clone.adapter.MyFragmentPagerAdapter
 import com.airensoft.creator.livemolo_clone.fragment.Main_fragment
 import com.airensoft.creator.livemolo_clone.fragment.ThreeFragment
 import com.airensoft.creator.livemolo_clone.fragment.TwoFragment
-import com.airensoft.creator.livemolo_clone.model.CastModel
 import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {

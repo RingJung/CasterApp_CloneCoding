@@ -27,6 +27,8 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
+
+
     </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.tabs.TabLayout

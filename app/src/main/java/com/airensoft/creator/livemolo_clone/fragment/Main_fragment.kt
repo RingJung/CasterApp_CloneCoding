@@ -2,20 +2,20 @@ package com.airensoft.creator.livemolo_clone.fragment
 
 import android.os.Bundle
 import android.provider.AlarmClock.EXTRA_MESSAGE
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.airensoft.creator.livemolo_clone.GridItemDecoration
 import com.airensoft.creator.livemolo_clone.R
-import com.airensoft.creator.livemolo_clone.adapter.CastListStaggeredAdapter
+import com.airensoft.creator.livemolo_clone.adapter.CastListAdapter
 import com.airensoft.creator.livemolo_clone.model.CastModel
 import kotlinx.android.synthetic.main.fragment_main.*
 
-class Main_fragment : Fragment(){
+class Main_fragment : Fragment(), View.OnClickListener{
     companion object {
         fun newInstance (message: String): Main_fragment {
 
@@ -34,26 +34,31 @@ class Main_fragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        val view: View = inflater!!.inflate(R.layout.fragment_main,container,false)
+        return view
 
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initView()
+        recyclerview?.setOnClickListener(this)
     }
-
+    private val adapter = CastListAdapter()
     private fun initView(){
         recyclerview.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         //This will for default android divider
         recyclerview.addItemDecoration(GridItemDecoration(10, 2))
-
-        val castListAdapter = CastListStaggeredAdapter()
-        recyclerview.adapter = castListAdapter
-
-        castListAdapter.setCastList(CastData())
+        recyclerview.adapter = adapter
+        adapter.setCastList(CastData())
     }
+
+     override fun onClick(v: View?) {
+        Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show()
+        Log.d("clicklisten","clicked")
+     }
+
+
 
     private fun CastData(): List<CastModel> {
         var listOfCast = arrayListOf<CastModel>()

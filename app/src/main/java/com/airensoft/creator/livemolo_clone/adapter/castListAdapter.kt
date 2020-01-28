@@ -1,6 +1,8 @@
 package com.airensoft.creator.livemolo_clone.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.airensoft.creator.livemolo_clone.CastListStaggeredViewHolder
@@ -8,8 +10,9 @@ import com.airensoft.creator.livemolo_clone.model.CastModel
 import com.airensoft.creator.livemolo_clone.R
 
 
-class CastListStaggeredAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class CastListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var listOfCast = listOf<CastModel>()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return CastListStaggeredViewHolder(
             LayoutInflater.from(
@@ -20,9 +23,16 @@ class CastListStaggeredAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
 
     override fun getItemCount(): Int = listOfCast.size
 
+
+
     override fun onBindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int) {
-        val movieViewHolder = viewHolder as CastListStaggeredViewHolder
-        movieViewHolder.bindView(listOfCast[position])
+        val CastViewHolder = viewHolder as CastListStaggeredViewHolder
+        CastViewHolder.bindView(listOfCast[position])
+
+        viewHolder.itemView.setOnClickListener{
+            Log.d("clicked", "mainfragment clicked ${position}")
+        }
+
    }
 
     override fun getItemId(position: Int): Long {
@@ -37,4 +47,8 @@ class CastListStaggeredAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
         this.listOfCast = listOfCasts
         notifyDataSetChanged()              //list  갱신
     }
+
+
+
+
 }
