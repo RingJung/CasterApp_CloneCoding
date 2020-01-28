@@ -16,17 +16,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/toolbar_title"
+
+        <EditText
+            android:id="@+id/editText_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:text="@string/app_name"
-            android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="검색어 입력하세요."
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="37dp"
+            tools:layout_editor_absoluteY="0dp" />
 
 
     </androidx.appcompat.widget.Toolbar>

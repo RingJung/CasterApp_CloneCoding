@@ -13,9 +13,12 @@ import com.airensoft.creator.livemolo_clone.GridItemDecoration
 import com.airensoft.creator.livemolo_clone.R
 import com.airensoft.creator.livemolo_clone.adapter.CastListAdapter
 import com.airensoft.creator.livemolo_clone.model.CastModel
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class Main_fragment : Fragment(), View.OnClickListener{
+    private val adapter = CastListAdapter()
+    private lateinit var SearchResult :String
     companion object {
         fun newInstance (message: String): Main_fragment {
 
@@ -44,7 +47,7 @@ class Main_fragment : Fragment(), View.OnClickListener{
         initView()
         recyclerview?.setOnClickListener(this)
     }
-    private val adapter = CastListAdapter()
+
     private fun initView(){
         recyclerview.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         //This will for default android divider
